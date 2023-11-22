@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:42:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 15:09:16 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/22 15:26:41 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,40 @@
 
 #include "test.h"
 
-// int	is_sorted(t_stack	**stack_a)
-// {
-// 	t_stack	*node;
+int	is_sorted(t_stack	**stack_a)
+{
+	t_stack	*node;
 
-// 	node = *stack_a;
-// 	while (node->next != 0)
-// 	{
-// 		if (node->num > node->next->num)
-// 			return (0);
-// 		node = node->next;
-// 	}
-// 	return (1);
-// }
+	node = *stack_a;
+	while (node->next != 0)
+	{
+		if (node->num > node->next->num)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
 
 void	sort_stack(t_stack	**stack_a, t_stack	**stack_b)
 {
-	
-
-	// ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	// print_stacks(*stack_a, *stack_b);
-	// command(stack_a, stack_b, "sa");
-	// ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	// print_stacks(*stack_a, *stack_b);
-	// command(stack_a, stack_b, "pb");
-	// command(stack_a, stack_b, "pb");
-	// command(stack_a, stack_b, "pb");
-	// ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	// print_stacks(*stack_a, *stack_b);
-	// command(stack_a, stack_b, "sa");
-	// ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	// print_stacks(*stack_a, *stack_b);
-	// command(stack_a, stack_b, "pa");
-	// command(stack_a, stack_b, "pa");
-	// command(stack_a, stack_b, "pa");
-	// ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	// print_stacks(*stack_a, *stack_b);
+	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	print_stacks(*stack_a, *stack_b);
+	command(stack_a, stack_b, "sa");
+	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	print_stacks(*stack_a, *stack_b);
+	command(stack_a, stack_b, "pb");
+	command(stack_a, stack_b, "pb");
+	command(stack_a, stack_b, "pb");
+	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	print_stacks(*stack_a, *stack_b);
+	command(stack_a, stack_b, "sa");
+	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	print_stacks(*stack_a, *stack_b);
+	command(stack_a, stack_b, "pa");
+	command(stack_a, stack_b, "pa");
+	command(stack_a, stack_b, "pa");
+	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	print_stacks(*stack_a, *stack_b);
 }
 
 int	main(int argc, char **argv)
