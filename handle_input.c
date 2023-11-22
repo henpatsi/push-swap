@@ -6,11 +6,12 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:02:18 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/21 15:02:37 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/22 09:55:22 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
 int	check_input(int len, char **strs)
 {
@@ -21,7 +22,7 @@ int	check_input(int len, char **strs)
 	while (i < len)
 	{
 		j = 0;
-		while(strs[i][j] != 0)
+		while (strs[i][j] != 0)
 		{
 			if (!ft_isdigit(strs[i][j]))
 				return (0);
@@ -32,19 +33,24 @@ int	check_input(int len, char **strs)
 	return (i);
 }
 
-int	*atoi_list(int len, char **strs)
+t_stack	*strs_to_stack(int len, char **strs)
 {
-	int	*ints;
-	int	i;
+	t_stack	*stack;
+	t_stack	*node;
+	int		i;
 
-	ints = malloc(len * sizeof(int));
-	if (ints == 0)
-		return (0);
+	stack = 0;
 	i = 0;
 	while (i < len)
 	{
-		ints[i] = ft_atoi(strs[i]);
+		node = ft_stacknew(ft_atoi(strs[i]));
+		if (node == 0)
+		{
+			ft_stackclear(&stack);
+			return (0);
+		}
+		ft_stackadd_back(&stack, node);
 		i++;
 	}
-	return (ints);
+	return (stack);
 }

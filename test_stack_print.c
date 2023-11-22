@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   test_stack_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 12:31:18 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 08:55:55 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/22 11:25:51 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/22 14:28:02 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "test.h"
 
-t_list	*ft_lstnew(void *content)
+void	print_stack(t_stack *stack)
 {
-	t_list	*node;
+	t_stack	*node;
 
-	node = malloc(sizeof(t_list));
-	if (node == 0)
-		return (0);
-	node->next = 0;
-	node->content = content;
-	return (node);
+	node = stack;
+	while (node != 0)
+	{
+		ft_printf("%i\n", node->num);
+		node = node->next;
+	}
+}
+
+void	print_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_printf("\na:\n\n");
+	print_stack(stack_a);
+	ft_printf("\nb:\n\n");
+	print_stack(stack_b);
+	ft_printf("\n--------------\n");
 }
