@@ -19,5 +19,6 @@ t_stack	*strs_to_stack(int len, char **strs);
 
 void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b);
 void	push_to_place_sort(t_stack **stack_a, t_stack **stack_b);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif
