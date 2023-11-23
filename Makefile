@@ -14,8 +14,8 @@ NAME = push_swap
 
 LIBFT = ./libft/libft.a
 
-SOURCES = push_swap.c handle_input.c stack_utils.c check_state.c \
-		  test_stack_print.c test_commands.c
+SOURCES = push_swap.c handle_input.c stack_utils.c check_state.c stack_commands.c \
+		  test_stack_print.c
 
 BONUS_SOURCE = checker_bonus.c
 
@@ -49,4 +49,4 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	./$(NAME) 1 5 3 8 5 7 6 9 2
+	./$(NAME) 6 4 3 1 7 2 9 5 8

@@ -16,6 +16,5 @@
 # include "libft.h"
 
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
-void	command(t_stack **stack_a, t_stack **stack_b, char *command);
 
 #endif

@@ -32,12 +32,6 @@ int		is_ascending(t_stack **stack_b);
 int		get_smallest(t_stack **stack_x);
 int		get_largest(t_stack **stack_x);
 
-void	sx(t_stack **stack_x);
-void	ss(t_stack **stack_a, t_stack **stack_b);
-void	px(t_stack **stack_a, t_stack **stack_b);
-void	rx(t_stack **stack_x);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rrx(t_stack **stack_a);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
+int	command(t_stack **stack_a, t_stack **stack_b, char *command);
 
 #endif

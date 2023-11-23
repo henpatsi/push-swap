@@ -15,13 +15,13 @@
 
 #include "test.h"
 
-void	rotate_tomin(t_stack **stack_a)
+void	rotate_tomin(t_stack **stack_a, t_stack **stack_b)
 {
 	int	smallest;
 
 	smallest = get_smallest(stack_a);
 	while ((*stack_a)->num != smallest)
-		rx(stack_a);
+		command(stack_a, stack_b, "ra");
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
@@ -30,14 +30,16 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 
 	while (*stack_a != 0)
 	{
-		rotate_tomin(stack_a);
-		px(stack_b, stack_a);
+		rotate_tomin(stack_a, stack_b);
+		if (is_descending(stack_a))
+			break ;
+		command(stack_a, stack_b, "pb");
 	}
-	print_stacks(*stack_a, *stack_b);
 	while (*stack_b != 0)
 	{
-		px(stack_a, stack_b);
+		command(stack_a, stack_b, "pa");
 	}
+
 	print_stacks(*stack_a, *stack_b);
 }
 

@@ -12,7 +12,7 @@
 
 #include "test.h"
 
-void	sx(t_stack **stack_x)
+static void	sx(t_stack **stack_x)
 {
 	t_stack	*tmp;
 
@@ -24,13 +24,13 @@ void	sx(t_stack **stack_x)
 	(*stack_x)->next = tmp;
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+static void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sx(stack_a);
 	sx(stack_b);
 }
 
-void	px(t_stack **stack_a, t_stack **stack_b)
+static void	px(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 
@@ -41,7 +41,7 @@ void	px(t_stack **stack_a, t_stack **stack_b)
 	ft_stackadd_front(stack_a, tmp);
 }
 
-void	rx(t_stack **stack_x)
+static void	rx(t_stack **stack_x)
 {
 	t_stack	*tmp;
 
@@ -53,13 +53,13 @@ void	rx(t_stack **stack_x)
 	tmp->next = 0;
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+static void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rx(stack_a);
 	rx(stack_b);
 }
 
-void	rrx(t_stack **stack_a)
+static void	rrx(t_stack **stack_a)
 {
 	t_stack	*tmp;
 
@@ -73,16 +73,18 @@ void	rrx(t_stack **stack_a)
 	tmp->next = 0;
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+static void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rrx(stack_a);
 	rrx(stack_b);
 }
 
-/*
-void	command(t_stack **stack_a, t_stack **stack_b, char *command)
+int	command(t_stack **stack_a, t_stack **stack_b, char *command)
 {
-	ft_printf("command: %s\n", command);
+	static int	moves;
+
+	moves += 1;
+	ft_printf("command #%i: %s\n", moves, command);
 	if (!ft_strcmp(command, "sa"))
 		sx(stack_a);
 	else if (!ft_strcmp(command, "sb"))
@@ -105,5 +107,5 @@ void	command(t_stack **stack_a, t_stack **stack_b, char *command)
 		rrx(stack_b);
 	else if (!ft_strcmp(command, "rrr"))
 		rrr(stack_a, stack_b);
+	return (moves);
 }
-*/
