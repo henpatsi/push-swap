@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 #include "libft.h"
 
 t_stack	*ft_stacknew(int n)

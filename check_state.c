@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "push_swap.h"
 
 int	is_descending(t_stack **stack_a)
@@ -28,21 +30,21 @@ int	is_descending(t_stack **stack_a)
 	return (1);
 }
 
-int	is_ascending(t_stack **stack_b)
-{
-	t_stack	*node;
+// int	is_ascending(t_stack **stack_b)
+// {
+// 	t_stack	*node;
 
-	if (*stack_b == 0)
-		return (0);
-	node = *stack_b;
-	while (node->next != 0)
-	{
-		if (node->num < node->next->num)
-			return (0);
-		node = node->next;
-	}
-	return (1);
-}
+// 	if (*stack_b == 0)
+// 		return (0);
+// 	node = *stack_b;
+// 	while (node->next != 0)
+// 	{
+// 		if (node->num < node->next->num)
+// 			return (0);
+// 		node = node->next;
+// 	}
+// 	return (1);
+// }
 
 int	get_smallest(t_stack **stack_x)
 {
@@ -78,4 +80,27 @@ int	get_largest(t_stack **stack_x)
 		node = node->next;
 	}
 	return (largest);
+}
+
+int	get_shortest_dir(t_stack **stack_x, int i)
+{
+	t_stack	*node;
+	int		moves_to_i;
+	int		moves;
+
+	if (*stack_x == 0)
+		return (0);
+	node = *stack_x;
+	moves_to_i = 0;
+	moves = 0;
+	while (node != 0)
+	{
+		if (node->num == i)
+			moves_to_i = moves;
+		moves++;
+		node = node->next;
+	}
+	if (moves_to_i < moves - moves_to_i + 1)
+		return (1);
+	return (2);
 }

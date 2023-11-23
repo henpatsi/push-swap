@@ -12,8 +12,7 @@
 
 #ifndef TEST_H
 # define TEST_H
-# include "push_swap.h"
-# include "libft.h"
+# include "stack.h"
 
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 

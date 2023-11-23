@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
+#include "stack.h"
 
 int	check_input(int len, char **strs)
 {
@@ -25,7 +25,10 @@ int	check_input(int len, char **strs)
 		while (strs[i][j] != 0)
 		{
 			if (!ft_isdigit(strs[i][j]))
-				return (0);
+			{
+				if (j != 0 || strs[i][j] != '-')
+					return (0);
+			}
 			j++;
 		}
 		i++;

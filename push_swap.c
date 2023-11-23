@@ -10,38 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-
-#include "test.h"
-
-void	rotate_tomin(t_stack **stack_a, t_stack **stack_b)
-{
-	int	smallest;
-
-	smallest = get_smallest(stack_a);
-	while ((*stack_a)->num != smallest)
-		command(stack_a, stack_b, "ra");
-}
-
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	print_stacks(*stack_a, *stack_b);
-
-	while (*stack_a != 0)
-	{
-		rotate_tomin(stack_a, stack_b);
-		if (is_descending(stack_a))
-			break ;
-		command(stack_a, stack_b, "pb");
-	}
-	while (*stack_b != 0)
-	{
-		command(stack_a, stack_b, "pa");
-	}
-
-	print_stacks(*stack_a, *stack_b);
-}
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {
@@ -57,7 +27,8 @@ int	main(int argc, char **argv)
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;
-	sort_stack(&stack_a, &stack_b);
+	push_smallest_sort(&stack_a, &stack_b);
+	//push_to_place_sort(&stack_a, &stack_b);
 	ft_stackclear(&stack_a);
 	ft_stackclear(&stack_b);
 	return (0);

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_commands.c                                    :+:      :+:    :+:   */
+/*   stack_commands.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 08:28:38 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 15:19:48 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/23 15:35:46 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/23 15:35:46 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "libft.h"
+#include "stack.h"
 
 static void	sx(t_stack **stack_x)
 {
@@ -79,7 +80,7 @@ static void	rrr(t_stack **stack_a, t_stack **stack_b)
 	rrx(stack_b);
 }
 
-int	command(t_stack **stack_a, t_stack **stack_b, char *command)
+int	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
 {
 	static int	moves;
 
