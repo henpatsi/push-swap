@@ -15,39 +15,29 @@
 
 #include "test.h"
 
-int	is_sorted(t_stack	**stack_a)
+void	rotate_tomin(t_stack **stack_a)
 {
-	t_stack	*node;
+	int	smallest;
 
-	node = *stack_a;
-	while (node->next != 0)
-	{
-		if (node->num > node->next->num)
-			return (0);
-		node = node->next;
-	}
-	return (1);
+	smallest = get_smallest(stack_a);
+	while ((*stack_a)->num != smallest)
+		rx(stack_a);
 }
 
-void	sort_stack(t_stack	**stack_a, t_stack	**stack_b)
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("is sorted: %i\n", is_sorted(stack_a));
 	print_stacks(*stack_a, *stack_b);
-	command(stack_a, stack_b, "sa");
-	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+
+	while (*stack_a != 0)
+	{
+		rotate_tomin(stack_a);
+		px(stack_b, stack_a);
+	}
 	print_stacks(*stack_a, *stack_b);
-	command(stack_a, stack_b, "pb");
-	command(stack_a, stack_b, "pb");
-	command(stack_a, stack_b, "pb");
-	ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	print_stacks(*stack_a, *stack_b);
-	command(stack_a, stack_b, "sa");
-	ft_printf("is sorted: %i\n", is_sorted(stack_a));
-	print_stacks(*stack_a, *stack_b);
-	command(stack_a, stack_b, "pa");
-	command(stack_a, stack_b, "pa");
-	command(stack_a, stack_b, "pa");
-	ft_printf("is sorted: %i\n", is_sorted(stack_a));
+	while (*stack_b != 0)
+	{
+		px(stack_a, stack_b);
+	}
 	print_stacks(*stack_a, *stack_b);
 }
 

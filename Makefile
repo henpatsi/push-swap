@@ -14,9 +14,14 @@ NAME = push_swap
 
 LIBFT = ./libft/libft.a
 
-SOURCES = push_swap.c handle_input.c stack_utils.c test_stack_print.c test_commands.c
+SOURCES = push_swap.c handle_input.c stack_utils.c check_state.c \
+		  test_stack_print.c test_commands.c
+
+BONUS_SOURCE = checker_bonus.c
 
 OBJECTS = $(SOURCES:.c=.o)
+
+BONUS_OBJECTS = $(BONUS_SOURCE:.c=.o)
 
 CFLAGS += -Wall -Wextra -Werror
 
@@ -30,6 +35,9 @@ $(OBJECTS): $(SOURCES)
 $(LIBFT):
 	make -C ./libft
 
+bonus:
+
+
 clean:
 	make clean -C ./libft
 	rm -f $(OBJECTS)
@@ -41,4 +49,4 @@ fclean: clean
 re: fclean all
 
 test: $(NAME)
-	./$(NAME) 2 1 3 6 5 8
+	./$(NAME) 1 5 3 8 5 7 6 9 2
