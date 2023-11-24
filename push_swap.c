@@ -27,9 +27,12 @@ int	main(int argc, char **argv)
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;
-	// push_smallest_sort(&stack_a, &stack_b);
-	// push_to_place_sort(&stack_a, &stack_b);
-	radix_sort(&stack_a, &stack_b);
+	if (ft_stacksize(stack_a) <= 3)
+		tiny_sort(&stack_a, &stack_b);
+	else if (ft_stacksize(stack_a) <= 50)
+		push_smallest_sort(&stack_a, &stack_b);
+	else
+		radix_sort(&stack_a, &stack_b);
 	ft_stackclear(&stack_a);
 	ft_stackclear(&stack_b);
 	return (0);

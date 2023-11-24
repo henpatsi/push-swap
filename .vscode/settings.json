@@ -1,5 +1,15 @@
 {
 	"files.associations": {
-		"libft.h": "c"
+		"libft.h": "c",
+		"array": "c",
+		"deque": "c",
+		"initializer_list": "c",
+		"ranges": "c",
+		"span": "c",
+		"stack": "c",
+		"type_traits": "c",
+		"xstring": "c",
+		"xutility": "c",
+		"push_swap.h": "c"
 	}
 }

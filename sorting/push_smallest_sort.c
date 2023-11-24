@@ -32,7 +32,7 @@ static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b)
 
 void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	print_stacks(*stack_a, *stack_b);
+	//print_stacks(*stack_a, *stack_b);
 	while (*stack_a != 0)
 	{
 		// if ((*stack_a)->num > (*stack_a)->next->num)
@@ -46,5 +46,6 @@ void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		exec_command(stack_a, stack_b, "pa");
 	}
-	print_stacks(*stack_a, *stack_b);
+	//print_stacks(*stack_a, *stack_b);
+	exec_command(stack_a, stack_b, "print");
 }

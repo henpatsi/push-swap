@@ -59,7 +59,7 @@ static void	rotate_to_place(t_stack **stack_a, t_stack **stack_b)
 
 void	push_to_place_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	print_stacks(*stack_a, *stack_b);
+	//print_stacks(*stack_a, *stack_b);
 	while (*stack_a != 0)
 	{
 		rotate_to_place(stack_a, stack_b);
@@ -69,5 +69,6 @@ void	push_to_place_sort(t_stack **stack_a, t_stack **stack_b)
 		exec_command(stack_a, stack_b, "pa");
 	while (!is_descending(stack_a))
 		exec_command(stack_a, stack_b, "ra");
-	print_stacks(*stack_a, *stack_b);
+	//print_stacks(*stack_a, *stack_b);
+	exec_command(stack_a, stack_b, "print");
 }

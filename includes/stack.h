@@ -25,6 +25,7 @@ t_stack	*ft_stacklast(t_stack *stack);
 t_stack	*ft_stacknew(int n);
 void	ft_stackadd_front(t_stack **stack, t_stack *new);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
+int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
 
 int		is_descending(t_stack **stack_a);

@@ -51,6 +51,20 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 	*stack = new;
 }
 
+int	ft_stacksize(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack != 0)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+
 void	ft_stackclear(t_stack **stack)
 {
 	t_stack	*node;

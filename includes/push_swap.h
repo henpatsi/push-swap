@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 13:05:05 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 13:42:56 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/21 10:48:27 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/22 13:50:50 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include "stack.h"
 
-void	print_stacks(t_stack *stack_a, t_stack *stack_b);
+int		check_input(int len, char **strs);
+t_stack	*strs_to_stack(int len, char **strs);
+
+void	tiny_sort(t_stack **stack_a, t_stack **stack_b);
+void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b);
+void	push_to_place_sort(t_stack **stack_a, t_stack **stack_b);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif

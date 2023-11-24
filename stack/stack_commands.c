@@ -85,7 +85,7 @@ int	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
 	static int	moves;
 
 	moves += 1;
-	ft_printf("command #%i: %s\n", moves, command);
+	//ft_printf("command #%i: %s\n", moves, command);
 	if (!ft_strcmp(command, "sa"))
 		sx(stack_a);
 	else if (!ft_strcmp(command, "sb"))
@@ -108,5 +108,7 @@ int	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
 		rrx(stack_b);
 	else if (!ft_strcmp(command, "rrr"))
 		rrr(stack_a, stack_b);
+	else if (!ft_strcmp(command, "print"))
+		ft_printf("commands = %i\n", --moves);
 	return (moves);
 }

@@ -30,22 +30,6 @@ int	is_descending(t_stack **stack_a)
 	return (1);
 }
 
-// int	is_ascending(t_stack **stack_b)
-// {
-// 	t_stack	*node;
-
-// 	if (*stack_b == 0)
-// 		return (0);
-// 	node = *stack_b;
-// 	while (node->next != 0)
-// 	{
-// 		if (node->num < node->next->num)
-// 			return (0);
-// 		node = node->next;
-// 	}
-// 	return (1);
-// }
-
 int	get_smallest(t_stack **stack_x)
 {
 	t_stack	*node;
