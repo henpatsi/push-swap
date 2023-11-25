@@ -37,12 +37,12 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	t_list	*commands;
 
-	if (argc < 2 || !check_input(argc - 1, &argv[1]))
+	if (argc < 2)
 	{
-		ft_printf("Error");
+		ft_printf("Error\n");
 		return (0);
 	}
-	stack_a = strs_to_stack(argc - 1, &argv[1]);
+	stack_a = make_stack(argc - 1, &argv[1]);
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;

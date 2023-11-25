@@ -15,8 +15,7 @@
 # include "stack.h"
 # include "libft.h"
 
-int		check_input(int len, char **strs);
-t_stack	*strs_to_stack(int len, char **strs);
+t_stack	*make_stack(int len, char **strs);
 
 void	tiny_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands);
 void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands);
