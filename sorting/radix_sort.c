@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "libft.h"
+#include "push_swap.h"
 
-#include "test.h"
-
-void	int_to_bin(int n, int *bin)
+static void	int_to_bin(int n, int *bin)
 {
 	int	i;
 
@@ -28,36 +25,39 @@ void	int_to_bin(int n, int *bin)
 	}
 }
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b)
+static void	push_zeros(t_stack **stack_a, t_stack **stack_b, int bin_index, t_list **commands)
 {
 	int	bin[32];
 	int	size;
 	int	i;
-	int	j;
-	
-	//print_stacks(*stack_a, *stack_b);
+
 	size = ft_stacksize(*stack_a);
+	i = 0;
+	while (i < size)
+	{
+		int_to_bin((*stack_a)->num, bin);
+		if (bin[bin_index] == 0)
+			exec_command(stack_a, stack_b, "pb", commands);
+		else
+			exec_command(stack_a, stack_b, "ra", commands);
+		i++;
+	}
+}
+
+void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
+{
+	int		i;
+	
 	i = 31;
 	while (i >= 0)
 	{
 		if (*stack_a == 0)
 			break ;
-		j = 0;
-		while (j < size)
-		{
-			int_to_bin((*stack_a)->num, bin);
-			if (bin[i] == 0)
-				exec_command(stack_a, stack_b, "pb");
-			else
-				exec_command(stack_a, stack_b, "ra");
-			j++;
-		}
+		push_zeros(stack_a, stack_b, i, commands);
 		while (*stack_b != 0)
-			exec_command(stack_a, stack_b, "pa");
+			exec_command(stack_a, stack_b, "pa", commands);
 		if (is_descending(stack_a))
 			break ;
 		i--;
 	}
-	//print_stacks(*stack_a, *stack_b);
-	exec_command(stack_a, stack_b, "print");
 }

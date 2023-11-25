@@ -11,12 +11,31 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft.h"
+
+void	print_commands(t_list *commands)
+{
+	t_list	*node;
+
+	node = commands;
+	while (node != 0)
+	{
+		ft_printf("%s\n", node->content);
+		node = node->next;
+	}
+}
+
+void	free_all(t_stack **stack_a, t_stack **stack_b, t_list **commands)
+{
+	ft_stackclear(stack_a);
+	ft_stackclear(stack_b);
+	ft_lstclear(commands, &free);
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_list	*commands;
 
 	if (argc < 2 || !check_input(argc - 1, &argv[1]))
 	{
@@ -27,13 +46,15 @@ int	main(int argc, char **argv)
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;
+	commands = 0;
 	if (ft_stacksize(stack_a) <= 3)
-		tiny_sort(&stack_a, &stack_b);
+		tiny_sort(&stack_a, &stack_b, &commands);
 	else if (ft_stacksize(stack_a) <= 50)
-		push_smallest_sort(&stack_a, &stack_b);
+		push_smallest_sort(&stack_a, &stack_b, &commands);
 	else
-		radix_sort(&stack_a, &stack_b);
-	ft_stackclear(&stack_a);
-	ft_stackclear(&stack_b);
+		radix_sort(&stack_a, &stack_b, &commands);
+	//optimize_commands(commands);
+	print_commands(commands);
+	free_all(&stack_a, &stack_b, &commands);
 	return (0);
 }

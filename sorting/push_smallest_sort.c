@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
-#include "test.h"
-
-static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b)
+static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 {
 	int	smallest;
 	int	shortest_dir;
@@ -24,28 +22,23 @@ static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b)
 	while ((*stack_a)->num != smallest)
 	{
 		if (shortest_dir == 1)
-			exec_command(stack_a, stack_b, "ra");
+			exec_command(stack_a, stack_b, "ra", commands);
 		else
-			exec_command(stack_a, stack_b, "rra");
+			exec_command(stack_a, stack_b, "rra", commands);
 	}
 }
 
-void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b)
+void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 {
-	//print_stacks(*stack_a, *stack_b);
 	while (*stack_a != 0)
 	{
-		// if ((*stack_a)->num > (*stack_a)->next->num)
-		// 	exec_command(stack_a, stack_b, "sa");
-		rotate_to_min(stack_a, stack_b);
+		rotate_to_min(stack_a, stack_b, commands);
 		if (is_descending(stack_a))
 			break ;
-		exec_command(stack_a, stack_b, "pb");
+		exec_command(stack_a, stack_b, "pb", commands);
 	}
 	while (*stack_b != 0)
 	{
-		exec_command(stack_a, stack_b, "pa");
+		exec_command(stack_a, stack_b, "pa", commands);
 	}
-	//print_stacks(*stack_a, *stack_b);
-	exec_command(stack_a, stack_b, "print");
 }

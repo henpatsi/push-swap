@@ -13,13 +13,24 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "stack.h"
+# include "libft.h"
 
 int		check_input(int len, char **strs);
 t_stack	*strs_to_stack(int len, char **strs);
 
-void	tiny_sort(t_stack **stack_a, t_stack **stack_b);
-void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b);
-void	push_to_place_sort(t_stack **stack_a, t_stack **stack_b);
-void	radix_sort(t_stack **stack_a, t_stack **stack_b);
+void	tiny_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands);
+void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands);
+
+void	exec_command(t_stack **stack_a, t_stack **stack_b, char *command, t_list **commands);
+void	sx(t_stack **stack_x);
+void	ss(t_stack **stack_a, t_stack **stack_b);
+void	px(t_stack **stack_a, t_stack **stack_b);
+void	rx(t_stack **stack_x);
+void	rr(t_stack **stack_a, t_stack **stack_b);
+void	rrx(t_stack **stack_a);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
+
+void	free_all(t_stack **stack_a, t_stack **stack_b, t_list **commands);
 
 #endif

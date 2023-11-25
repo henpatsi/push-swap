@@ -10,82 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "stack.h"
+#include "push_swap.h"
 
-static void	sx(t_stack **stack_x)
+static int	record_command(t_stack **stack_a, t_stack **stack_b, char *command, t_list **commands)
 {
-	t_stack	*tmp;
+	char	*content;
+	t_list	*entry;
 
-	if (*stack_x == 0 || (*stack_x)->next == 0)
-		return ;
-	tmp = *stack_x;
-	*stack_x = tmp->next;
-	tmp->next = tmp->next->next;
-	(*stack_x)->next = tmp;
+	content = ft_strdup(command);
+	if (content == 0)
+	{
+		free_all(stack_a, stack_b, commands);
+		exit (0);
+	}
+	entry = ft_lstnew(content);
+	if (entry == 0)
+	{
+		free_all(stack_a, stack_b, commands);
+		exit (0);
+	}
+	ft_lstadd_back(commands, entry);
+	return (1);
 }
 
-static void	ss(t_stack **stack_a, t_stack **stack_b)
+void	exec_command(t_stack **stack_a, t_stack **stack_b, char *command, t_list **commands)
 {
-	sx(stack_a);
-	sx(stack_b);
-}
-
-static void	px(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*tmp;
-
-	if (*stack_b == 0)
-		return ;
-	tmp = *stack_b;
-	*stack_b = tmp->next;
-	ft_stackadd_front(stack_a, tmp);
-}
-
-static void	rx(t_stack **stack_x)
-{
-	t_stack	*tmp;
-
-	if (*stack_x == 0 || (*stack_x)->next == 0)
-		return ;
-	tmp = *stack_x;
-	ft_stackadd_back(stack_x, *stack_x);
-	*stack_x = tmp->next;
-	tmp->next = 0;
-}
-
-static void	rr(t_stack **stack_a, t_stack **stack_b)
-{
-	rx(stack_a);
-	rx(stack_b);
-}
-
-static void	rrx(t_stack **stack_a)
-{
-	t_stack	*tmp;
-
-	if (*stack_a == 0 || (*stack_a)->next == 0)
-		return ;
-	tmp = *stack_a;
-	while (tmp->next->next != 0)
-		tmp = tmp->next;
-	ft_stackadd_front(stack_a, tmp->next);
-	*stack_a = tmp->next;
-	tmp->next = 0;
-}
-
-static void	rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	rrx(stack_a);
-	rrx(stack_b);
-}
-
-int	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
-{
-	static int	moves;
-
-	moves += 1;
-	//ft_printf("command #%i: %s\n", moves, command);
+	record_command(stack_a, stack_b, command, commands);
 	if (!ft_strcmp(command, "sa"))
 		sx(stack_a);
 	else if (!ft_strcmp(command, "sb"))
@@ -108,7 +58,4 @@ int	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
 		rrx(stack_b);
 	else if (!ft_strcmp(command, "rrr"))
 		rrr(stack_a, stack_b);
-	else if (!ft_strcmp(command, "print"))
-		ft_printf("commands = %i\n", --moves);
-	return (moves);
 }

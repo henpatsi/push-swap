@@ -29,11 +29,8 @@ int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
 
 int		is_descending(t_stack **stack_a);
-// int		is_ascending(t_stack **stack_b);
 int		get_smallest(t_stack **stack_x);
 int		get_largest(t_stack **stack_x);
-int	get_shortest_dir(t_stack **stack_x, int i);
-
-int		exec_command(t_stack **stack_a, t_stack **stack_b, char *command);
+int		get_shortest_dir(t_stack **stack_x, int i);
 
 #endif
