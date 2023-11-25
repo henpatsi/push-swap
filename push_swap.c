@@ -12,23 +12,46 @@
 
 #include "push_swap.h"
 
-void	print_commands(t_list *commands)
-{
-	t_list	*node;
-
-	node = commands;
-	while (node != 0)
-	{
-		ft_printf("%s\n", node->content);
-		node = node->next;
-	}
-}
-
 void	free_all(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 {
 	ft_stackclear(stack_a);
 	ft_stackclear(stack_b);
 	ft_lstclear(commands, &free);
+}
+
+static void	optimize_commands(t_list **node)
+{
+	t_list	*tmp;
+	char	*c1;
+	char	*c2;
+
+	tmp = *node;
+	if (tmp->next == 0)
+		return ;
+	c1 = tmp->content;
+	c2 = tmp->next->content;
+	if ((!ft_strcmp(c1, "pa") && !ft_strcmp(c2, "pb"))
+		|| (!ft_strcmp(c1, "pb") && !ft_strcmp(c2, "pa")))
+	{
+		*node = tmp->next->next;
+	}
+}
+
+static void	print_commands(t_list *commands)
+{
+	t_list	*node;
+	// int		count;
+
+	// count = 0;
+	node = commands;
+	while (node != 0)
+	{
+		optimize_commands(&node);
+		ft_printf("%s\n", node->content);
+		node = node->next;
+		count++;
+	}
+	// ft_printf("commands: %i\n", count);
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +76,6 @@ int	main(int argc, char **argv)
 		push_smallest_sort(&stack_a, &stack_b, &commands);
 	else
 		radix_sort(&stack_a, &stack_b, &commands);
-	//optimize_commands(commands);
 	print_commands(commands);
 	free_all(&stack_a, &stack_b, &commands);
 	return (0);
