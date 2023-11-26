@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 #include "push_swap.h"
 
-int	is_descending(t_stack **stack_a)
+#include "libft.h"
+
+int	is_sorted(t_stack **stack_a)
 {
 	t_stack	*node;
 
@@ -27,6 +27,28 @@ int	is_descending(t_stack **stack_a)
 			return (0);
 		node = node->next;
 	}
+	return (1);
+}
+
+int	is_sorted_looping(t_stack **stack_a)
+{
+	t_stack	*node;
+	int		decreases;
+
+	if (*stack_a == 0)
+		return (0);
+	node = *stack_a;
+	decreases = 0;
+	while (node->next != 0)
+	{
+		if (node->num > node->next->num)
+			decreases++;
+		if (decreases > 1)
+			return (0);
+		node = node->next;
+	}
+	if (node->num > (*stack_a)->num && decreases > 0)
+		return (0);
 	return (1);
 }
 

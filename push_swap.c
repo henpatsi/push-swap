@@ -49,7 +49,7 @@ static void	print_commands(t_list *commands)
 		optimize_commands(&node);
 		ft_printf("%s\n", node->content);
 		node = node->next;
-		count++;
+		// count++;
 	}
 	// ft_printf("commands: %i\n", count);
 }
@@ -61,10 +61,7 @@ int	main(int argc, char **argv)
 	t_list	*commands;
 
 	if (argc < 2)
-	{
-		ft_printf("Error\n");
 		return (0);
-	}
 	stack_a = make_stack(argc - 1, &argv[1]);
 	if (stack_a == 0)
 		return (0);

@@ -25,6 +25,8 @@ static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b, t_list **command
 			exec_command(stack_a, stack_b, "ra", commands);
 		else
 			exec_command(stack_a, stack_b, "rra", commands);
+		if ((*stack_a)->num == (*stack_a)->next->num + 1) // very small opitimization, sometimes saves 1-2 commands
+			exec_command(stack_a, stack_b, "sa", commands);
 	}
 }
 
@@ -32,8 +34,10 @@ void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 {
 	while (*stack_a != 0)
 	{
+		if ((*stack_a)->num == (*stack_a)->next->num + 1) // very small opitimization, sometimes saves 1-2 commands
+			exec_command(stack_a, stack_b, "sa", commands);
 		rotate_to_min(stack_a, stack_b, commands);
-		if (is_descending(stack_a))
+		if (is_sorted(stack_a))
 			break ;
 		exec_command(stack_a, stack_b, "pb", commands);
 	}

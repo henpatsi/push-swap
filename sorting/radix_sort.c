@@ -56,7 +56,7 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 		push_zeros(stack_a, stack_b, i, commands);
 		while (*stack_b != 0)
 			exec_command(stack_a, stack_b, "pa", commands);
-		if (is_descending(stack_a))
+		if (is_sorted(stack_a))
 			break ;
 		i--;
 	}
