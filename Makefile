@@ -22,9 +22,9 @@ SOURCES = push_swap.c handle_input.c \
 		  ./sorting/tiny_sort.c ./sorting/push_smallest_sort.c ./sorting/radix_sort.c \
 		  ./stack/test_stack_print.c
 
-BONUS_SOURCES = ./bonus/checker_bonus.c handle_input.c \
-				./sorting/exec_command.c ./sorting/p_s_commands.c ./sorting/r_commands.c \
-				./stack/stack_utils.c ./stack/check_state.c
+BONUS_SOURCES = ./bonus/checker_bonus.c ./bonus/handle_input_bonus.c \
+				./bonus/exec_command_bonus.c ./bonus/p_s_commands_bonus.c ./bonus/r_commands_bonus.c \
+				./bonus/stack_utils_bonus.c ./bonus/check_state_bonus.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -42,7 +42,9 @@ $(OBJECTS): $(SOURCES)
 $(LIBFT):
 	make -C ./libft
 
-bonus: $(BONUS_OBJECTS) $(LIBFT)
+bonus: $(BONUS)
+
+$(BONUS): $(BONUS_OBJECTS) $(LIBFT)
 	cc $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) -o $(BONUS)
 	
 $(BONUS_OBJECTS): $(BONUS_SOURCES)

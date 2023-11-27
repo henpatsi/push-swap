@@ -10,6 +10,7 @@
 		"type_traits": "c",
 		"xstring": "c",
 		"xutility": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"stack.h": "c"
 	}
 }
