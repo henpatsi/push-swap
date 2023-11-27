@@ -37,23 +37,3 @@ void	exec_command(t_stack **stack_a, t_stack **stack_b, char *command)
 	else if (!ft_strcmp(command, "rrr"))
 		rrr(stack_a, stack_b);
 }
-
-void	exec_command_list(t_stack **stack_a, t_stack **stack_b, char **commands)
-{
-	int		i;
-	char	*command;
-
-	i = 0;
-	while (commands[i] != 0)
-	{
-		command = ft_strtrim(commands[i], "\n");
-		if (command == 0)
-			return ;
-		ft_printf("exec: %s\n", command);
-		exec_command(stack_a, stack_b, command);
-		free(command);
-		i++;
-	}
-	stack_a += 1;
-	stack_b += 1;
-}

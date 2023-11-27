@@ -20,8 +20,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	free_all(t_stack **stack_a, t_stack **stack_b, char **commands);
-
 t_stack	*make_stack(int len, char **strs);
 t_stack	*ft_stacklast(t_stack *stack);
 t_stack	*ft_stacknew(int n);
@@ -29,7 +27,7 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
 void	ft_stackclear(t_stack **stack);
 
-void	exec_command_list(t_stack **stack_a, t_stack **stack_b, char **commands);
+void	exec_command(t_stack **stack_a, t_stack **stack_b, char *command);
 void	sx(t_stack **stack_x);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	px(t_stack **stack_a, t_stack **stack_b);
