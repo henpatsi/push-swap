@@ -6,13 +6,14 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:05:00 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/23 16:05:00 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 11:28:10 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b, t_list **commands)
+static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b,
+						t_list **commands)
 {
 	int	smallest;
 	int	shortest_dir;
@@ -25,16 +26,17 @@ static void	rotate_to_min(t_stack **stack_a, t_stack **stack_b, t_list **command
 			exec_command(stack_a, stack_b, "ra", commands);
 		else
 			exec_command(stack_a, stack_b, "rra", commands);
-		if ((*stack_a)->num == (*stack_a)->next->num + 1) // very small opitimization, sometimes saves 1-2 commands
+		if ((*stack_a)->num == (*stack_a)->next->num + 1)
 			exec_command(stack_a, stack_b, "sa", commands);
 	}
 }
 
-void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
+void	push_smallest_sort(t_stack **stack_a, t_stack **stack_b,
+						t_list **commands)
 {
 	while (*stack_a != 0)
 	{
-		if ((*stack_a)->num == (*stack_a)->next->num + 1) // very small opitimization, sometimes saves 1-2 commands
+		if ((*stack_a)->num == (*stack_a)->next->num + 1)
 			exec_command(stack_a, stack_b, "sa", commands);
 		rotate_to_min(stack_a, stack_b, commands);
 		if (is_sorted(stack_a))

@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:23:41 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/25 12:23:41 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:20:39 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rrx(t_stack **stack_a)
 	tmp = *stack_a;
 	while (tmp->next->next != 0)
 		tmp = tmp->next;
-	ft_stackadd_front(stack_a, tmp->next);
+	tmp->next->next = *stack_a;
 	*stack_a = tmp->next;
 	tmp->next = 0;
 }

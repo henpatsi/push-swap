@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:32:12 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/27 13:32:12 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:25:08 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	*strs_to_ints(int len, char **strs)
 		while (j < i)
 		{
 			if (ints[i] == ints[j])
-				return error();
+				return (error());
 			j++;
 		}
 		i++;

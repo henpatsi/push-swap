@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:32:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/27 13:32:44 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:21:33 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	px(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	tmp = *stack_b;
 	*stack_b = tmp->next;
-	ft_stackadd_front(stack_a, tmp);
+	tmp->next = *stack_a;
+	*stack_a = tmp;
 }

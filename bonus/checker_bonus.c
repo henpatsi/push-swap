@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:32:30 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/23 10:32:30 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:44:11 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	read_commands(t_stack **stack_a, t_stack **stack_b)
 		{
 			command[i] = read_str[i];
 			i++;
-		} // add check that \n reached and correct command
+		} // add check that \n reached and correct command, else error
 		command[i] = 0;
 		exec_command(stack_a, stack_b, command);
 	}

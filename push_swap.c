@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:42:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 15:26:41 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:37:21 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,14 @@ static void	optimize_commands(t_list **node)
 static void	print_commands(t_list *commands)
 {
 	t_list	*node;
-	// int		count;
 
-	// count = 0;
 	node = commands;
 	while (node != 0)
 	{
 		optimize_commands(&node);
 		ft_printf("%s\n", node->content);
 		node = node->next;
-		// count++;
 	}
-	// ft_printf("commands: %i\n", count);
 }
 
 int	main(int argc, char **argv)

@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_FUNCTIONS_H
-# define STACK_FUNCTIONS_H
+#ifndef STACK_H
+# define STACK_H
 
-#include "stack.h"
+# include "stack.h"
 
 typedef struct s_stack
 {
@@ -23,16 +23,13 @@ typedef struct s_stack
 
 t_stack	*ft_stacklast(t_stack *stack);
 t_stack	*ft_stacknew(int n);
-void	ft_stackadd_front(t_stack **stack, t_stack *new);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
 int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
-
 int		is_sorted(t_stack **stack_a);
 int		get_smallest(t_stack **stack_x);
 int		get_largest(t_stack **stack_x);
 int		get_shortest_dir(t_stack **stack_x, int i);
-
-int	is_sorted_looping(t_stack **stack_a);
+int		is_sorted_looping(t_stack **stack_a);
 
 #endif

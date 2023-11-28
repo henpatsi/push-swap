@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:34:04 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/27 13:34:04 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:21:41 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 		*stack = new;
 	else
 		ft_stacklast(*stack)->next = new;
-}
-
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
-{
-	new->next = *stack;
-	*stack = new;
 }
 
 void	ft_stackclear(t_stack **stack)

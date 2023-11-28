@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_commands.c                                   :+:      :+:    :+:   */
+/*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:35:46 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/23 15:35:46 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 11:25:52 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	record_command(t_stack **stack_a, t_stack **stack_b, char *command, t_list **commands)
+static int	record_command(t_stack **stack_a, t_stack **stack_b,
+							char *command, t_list **commands)
 {
 	char	*content;
 	t_list	*entry;
@@ -33,7 +34,8 @@ static int	record_command(t_stack **stack_a, t_stack **stack_b, char *command, t
 	return (1);
 }
 
-void	exec_command(t_stack **stack_a, t_stack **stack_b, char *command, t_list **commands)
+void	exec_command(t_stack **stack_a, t_stack **stack_b,
+					char *command, t_list **commands)
 {
 	record_command(stack_a, stack_b, command, commands);
 	if (!ft_strcmp(command, "sa"))

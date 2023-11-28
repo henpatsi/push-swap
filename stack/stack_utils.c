@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 09:02:19 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 12:13:46 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/28 12:21:45 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 		ft_stacklast(*stack)->next = new;
 }
 
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
-{
-	new->next = *stack;
-	*stack = new;
-}
-
 int	ft_stacksize(t_stack *stack)
 {
 	int	size;
@@ -63,7 +57,6 @@ int	ft_stacksize(t_stack *stack)
 	}
 	return (size);
 }
-
 
 void	ft_stackclear(t_stack **stack)
 {
