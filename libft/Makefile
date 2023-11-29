@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/21 14:05:59 by hpatsi            #+#    #+#              #
-#    Updated: 2023/11/21 14:05:59 by hpatsi           ###   ########.fr        #
+#    Created: 2023/10/24 08:42:34 by hpatsi            #+#    #+#              #
+#    Updated: 2023/11/07 09:09:44 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,13 @@ SOURCES = ft_atoi.c ft_atol.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c 
 	  ft_isspace.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 	  ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
 	  ft_lstiter.c ft_lstmap.c ft_putunbr_fd.c ft_puthex_fd.c \
-	  ft_putaddr_fd.c ft_printf.c ft_printf_strutils.c \
-	  ft_printf_nbrutils.c ft_printf_hexutils.c
+	  ft_putaddr_fd.c \
+	  ft_printf.c ft_printf_strutils.c ft_printf_nbrutils.c ft_printf_hexutils.c \
+	  get_next_line.c get_next_line_utils.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-INCLUDES_DIR = ../includes/
+INCLUDES_DIR = ../
 
 CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
@@ -37,6 +38,9 @@ $(NAME): $(OBJECTS)
 	ar -rc $(NAME) $(OBJECTS)
 
 $(OBJECTS): $(SOURCES)
+
+bonus:
+	echo "bonus rule for tests"
 
 clean:
 	rm -f $(OBJECTS) $(BONUS_OBJECTS)

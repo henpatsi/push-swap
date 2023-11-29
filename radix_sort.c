@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 21:15:14 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/28 11:29:05 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/29 10:54:52 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,15 @@ static void	push_back(t_stack **stack_a, t_stack **stack_b,
 
 void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_list **commands)
 {
-	int		i;
+	int	i;
 
 	i = 31;
 	while (i >= 0)
 	{
-		if (*stack_a == 0)
+		if (*stack_a == 0 || is_sorted(stack_a))
 			break ;
 		push_zeros(stack_a, stack_b, i, commands);
 		push_back(stack_a, stack_b, i, commands);
-		if (is_sorted(stack_a))
-			break ;
 		i--;
 	}
 }

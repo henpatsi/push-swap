@@ -6,33 +6,42 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:32:30 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/28 12:44:11 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/29 16:06:39 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-static void	read_commands(t_stack **stack_a, t_stack **stack_b)
+static int	read_commands(t_stack **stack_a, t_stack **stack_b)
 {
-	char	read_str[5];
-	char	command[4];
-	int		i;
-	int		read_size;
+	char	*line;
 
-	read_size = 0;
-	while (read_size != 1)
+	line = get_next_line(0);
+	while (line != 0)
 	{
-		ft_bzero(read_str, 5);
-		read_size = read(0, read_str, 4);
-		i = 0;
-		while (read_str[i] != 0 && read_str[i] != '\n')
+		if (exec_command(stack_a, stack_b, line) == 0)
 		{
-			command[i] = read_str[i];
-			i++;
-		} // add check that \n reached and correct command, else error
-		command[i] = 0;
-		exec_command(stack_a, stack_b, command);
+			ft_putstr_fd("Error\n", 2);
+			free(line);
+			return (0);
+		}
+		free(line);
+		line = get_next_line(0);
 	}
+	free(line);
+	return (1);
+}
+
+static t_stack	*stack_from_str(char *str)
+{
+	char	**strs;
+	int		len;
+
+	strs = ft_split(str, ' ');
+	len = 0;
+	while (strs[len] != 0)
+		len++;
+	return (make_stack(len, strs));
 }
 
 int	main(int argc, char **argv)
@@ -42,15 +51,20 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	stack_a = make_stack(argc - 1, &argv[1]);
+	if (argc == 2)
+		stack_a = stack_from_str(argv[1]);
+	else
+		stack_a = make_stack(argc - 1, &argv[1]);
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;
-	read_commands(&stack_a, &stack_b);
-	if (is_sorted(&stack_a))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
+	if (read_commands(&stack_a, &stack_b) != 0)
+	{
+		if (is_sorted(&stack_a))
+			ft_printf("OK\n");
+		else
+			ft_printf("KO\n");
+	}
 	ft_stackclear(&stack_a);
 	ft_stackclear(&stack_b);
 	return (0);

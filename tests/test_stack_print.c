@@ -6,12 +6,11 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 11:25:51 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/22 14:28:02 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/29 09:36:46 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "libft.h"
+#include "push_swap.h"
 
 void	print_stack(t_stack *stack)
 {

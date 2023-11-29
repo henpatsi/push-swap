@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 	else if (*str == '+')
 		str++;
 	num = 0;
-	while (*str != 0 && ft_isdigit(*str))
+	while (*str != 0 && (*str >= '0' && *str <= '9'))
 	{
 		num *= 10;
 		num += (*str - '0');

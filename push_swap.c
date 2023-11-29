@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:42:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/28 12:37:21 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/29 10:54:20 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ static void	optimize_commands(t_list **node)
 	{
 		*node = tmp->next->next;
 	}
+	else if ((!ft_strcmp(c1, "ra") && !ft_strcmp(c2, "rb"))
+		|| (!ft_strcmp(c1, "rb") && !ft_strcmp(c2, "ra")))
+	{
+		ft_printf("rr\n");
+		*node = tmp->next->next;
+	}
 }
 
 static void	print_commands(t_list *commands)
@@ -50,6 +56,18 @@ static void	print_commands(t_list *commands)
 	}
 }
 
+static t_stack	*stack_from_str(char *str)
+{
+	char	**strs;
+	int		len;
+
+	strs = ft_split(str, ' ');
+	len = 0;
+	while (strs[len] != 0)
+		len++;
+	return (make_stack(len, strs));
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -58,7 +76,10 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	stack_a = make_stack(argc - 1, &argv[1]);
+	if (argc == 2)
+		stack_a = stack_from_str(argv[1]);
+	else
+		stack_a = make_stack(argc - 1, &argv[1]);
 	if (stack_a == 0)
 		return (0);
 	stack_b = 0;

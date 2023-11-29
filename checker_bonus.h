@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                  :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 15:27:44 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/23 15:27:44 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/23 10:32:34 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/29 15:44:17 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
-
-# include "stack.h"
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
+# include "libft.h"
 
 typedef struct s_stack
 {
@@ -21,15 +20,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+t_stack	*make_stack(int len, char **strs);
 t_stack	*ft_stacklast(t_stack *stack);
 t_stack	*ft_stacknew(int n);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
-int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
+int		exec_command(t_stack **stack_a, t_stack **stack_b, char *command);
+void	sx(t_stack **stack_x);
+void	ss(t_stack **stack_a, t_stack **stack_b);
+void	px(t_stack **stack_a, t_stack **stack_b);
+void	rx(t_stack **stack_x);
+void	rr(t_stack **stack_a, t_stack **stack_b);
+void	rrx(t_stack **stack_a);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack **stack_a);
-int		get_smallest(t_stack **stack_x);
-int		get_largest(t_stack **stack_x);
-int		get_shortest_dir(t_stack **stack_x, int i);
-int		is_sorted_looping(t_stack **stack_a);
 
 #endif
