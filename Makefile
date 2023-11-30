@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 10:43:55 by hpatsi            #+#    #+#              #
-#    Updated: 2023/11/30 10:46:20 by hpatsi           ###   ########.fr        #
+#    Updated: 2023/11/30 11:10:19 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ test_inputs: $(NAME)
 	./$(NAME) 0 1 2
 	./$(NAME) 1 2 2147483647
 	./$(NAME) -2147483648 1 2
+	./$(NAME) "1 2 3"
 	@echo "\nInvalid inputs:"
 	./$(NAME) 1 2 1
 	./$(NAME) 1 2 2147483648
@@ -74,6 +75,8 @@ test_inputs: $(NAME)
 	./$(NAME) 1 2 a
 	./$(NAME) 1 2 +3
 	./$(NAME) 1 2 3a
+	./$(NAME) "1 2 3a"
+	./$(NAME) "1 2 3" 4
 
 test: test_inputs $(NAME)
 	@echo "\n---TESTING SORT---"

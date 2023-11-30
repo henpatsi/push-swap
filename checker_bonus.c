@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:32:30 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/30 10:56:36 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:12:10 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_stack	*stack_from_str(char *str)
 		len++;
 	stack_a = make_stack(len, strs);
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		free(strs[i]);
 		i++;
