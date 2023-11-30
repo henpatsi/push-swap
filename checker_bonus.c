@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:32:30 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/29 16:06:39 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/30 10:56:36 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,26 @@ static int	read_commands(t_stack **stack_a, t_stack **stack_b)
 
 static t_stack	*stack_from_str(char *str)
 {
+	t_stack	*stack_a;
 	char	**strs;
 	int		len;
+	int		i;
 
 	strs = ft_split(str, ' ');
+	if (strs == 0)
+		return (0);
 	len = 0;
 	while (strs[len] != 0)
 		len++;
-	return (make_stack(len, strs));
+	stack_a = make_stack(len, strs);
+	i = 0;
+	while(i < len)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (stack_a);
 }
 
 int	main(int argc, char **argv)
