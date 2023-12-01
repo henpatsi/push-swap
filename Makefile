@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 10:43:55 by hpatsi            #+#    #+#              #
-#    Updated: 2023/11/30 11:10:19 by hpatsi           ###   ########.fr        #
+#    Updated: 2023/12/01 09:21:13 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,19 @@ BONUS = checker
 
 LIBFT = ./libft/libft.a
 
-SOURCES = push_swap.c handle_input.c \
+SOURCES_DIR = ./srcs/
+
+SOURCES = $(addprefix $(SOURCES_DIR), \
+		  push_swap.c handle_input.c \
 		  stack_utils.c check_state.c \
 		  exec_command.c p_s_commands.c r_commands.c \
-		  tiny_sort.c push_smallest_sort.c radix_sort.c \
-
-BONUS_SOURCES = checker_bonus.c handle_input_bonus.c \
-				exec_command_bonus.c p_s_commands_bonus.c r_commands_bonus.c \
-				stack_utils_bonus.c check_state_bonus.c
+		  tiny_sort.c push_smallest_sort.c radix_sort.c)
 
 OBJECTS = $(SOURCES:.c=.o)
 
-BONUS_OBJECTS = $(BONUS_SOURCES:.c=.o)
+INCLUDES_DIR = ./includes/
 
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
 all: $(NAME)
 
@@ -43,15 +42,14 @@ $(LIBFT):
 
 bonus: $(BONUS)
 
-$(BONUS): $(BONUS_OBJECTS) $(LIBFT)
-	cc $(CFLAGS) $(BONUS_OBJECTS) $(LIBFT) -o $(BONUS)
-	
-$(BONUS_OBJECTS): $(BONUS_SOURCES)
+$(BONUS):
+	make -C ./bonus
+	mv ./bonus/$(BONUS) .
 
 clean:
 	make clean -C ./libft
-	rm -f $(OBJECTS) 
-	rm -f $(BONUS_OBJECTS)
+	make clean -C ./bonus
+	rm -f $(OBJECTS)
 
 fclean: clean
 	rm -f $(LIBFT)
@@ -144,7 +142,13 @@ test_bonus: $(NAME) $(BONUS) $(LIBFT)
 	./$(BONUS) 1 2 a
 	./$(BONUS) 1 2 +3
 	./$(BONUS) 1 2 3a
-	@echo "\nFunction:"
+	./$(BONUS)
+	@echo "\nDetects incorrect sort:"
+	@printf "ra\nrra\nrra\n" | ./$(BONUS) "1 2 3"
+	@printf "ra\nra\nrra\nrra\n" | ./$(BONUS) "3 2 1"
+	@printf "pb\npb\npb\n" | ./$(BONUS) "1 2 3"
+	@printf "pb\n" | ./$(BONUS) "1 2 3"
+	@echo "\nDetects correct sort:"
 	@./$(NAME) "5 4 2 1 3" | ./$(BONUS) "5 4 2 1 3"
 	@./$(NAME) "2 1 3 5 4" | ./$(BONUS) "2 1 3 5 4"
 	@./$(NAME) "3 2 5 4 1" | ./$(BONUS) "3 2 5 4 1"

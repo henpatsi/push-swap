@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:32:30 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/30 11:12:10 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/12/01 08:50:06 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	stack_b = 0;
 	if (read_commands(&stack_a, &stack_b) != 0)
 	{
-		if (is_sorted(&stack_a))
+		if (is_sorted(&stack_a) && stack_b == 0)
 			ft_printf("OK\n");
 		else
 			ft_printf("KO\n");

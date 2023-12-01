@@ -28,7 +28,7 @@ SOURCES = ft_atoi.c ft_atol.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 
-INCLUDES_DIR = ../
+INCLUDES_DIR = ../includes/
 
 CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
@@ -43,14 +43,9 @@ bonus:
 	echo "bonus rule for tests"
 
 clean:
-	rm -f $(OBJECTS) $(BONUS_OBJECTS)
+	rm -f $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-tests: $(NAME)
-	cc $(CFLAGS) tests.c $(NAME) -I $(INCLUDES_DIR) -o test.out
-	./test.out
-	rm -f test.out
