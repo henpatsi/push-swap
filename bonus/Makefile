@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 08:54:08 by hpatsi            #+#    #+#              #
-#    Updated: 2023/12/01 09:16:45 by hpatsi           ###   ########.fr        #
+#    Updated: 2023/12/01 10:47:10 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,10 @@ CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT)
+$(NAME): $(OBJECTS)
 	cc $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(OBJECTS): $(SOURCES)
-
-$(LIBFT):
-	make -C ../libft
 
 clean:
 	rm -f $(OBJECTS)

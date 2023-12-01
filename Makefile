@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 10:43:55 by hpatsi            #+#    #+#              #
-#    Updated: 2023/12/01 09:21:13 by hpatsi           ###   ########.fr        #
+#    Updated: 2023/12/01 10:47:52 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,10 @@ CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT)
+$(NAME): $(OBJECTS)
 	cc $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(OBJECTS): $(SOURCES)
-
-$(LIBFT):
-	make -C ./libft
 
 bonus: $(BONUS)
 
@@ -47,12 +44,10 @@ $(BONUS):
 	mv ./bonus/$(BONUS) .
 
 clean:
-	make clean -C ./libft
 	make clean -C ./bonus
 	rm -f $(OBJECTS)
 
 fclean: clean
-	rm -f $(LIBFT)
 	rm -f $(NAME)
 	rm -f $(BONUS)
 
