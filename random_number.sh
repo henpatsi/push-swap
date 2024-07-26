@@ -22,7 +22,7 @@ do
 	ARG="${NUMS[@]}"
 	COMMAND_COUNT[$i]=$( ./push_swap $ARG | wc -l | tr -d ' ' )
 	SUM=$(( $SUM + ${COMMAND_COUNT[$i]} ))
-	RESULT[$i]=$( ./push_swap $ARG | ./checker_Mac $ARG )
+	RESULT[$i]=$( ./push_swap $ARG | ./checker_linux $ARG )
 
 	if [ "${RESULT[$i]}" = "OK" ]
 	then
